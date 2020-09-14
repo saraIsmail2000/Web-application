@@ -1,0 +1,100 @@
+﻿@model Social_orm.Models.Child
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Child</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EducationLevel" class="control-label"></label><br>
+                <input asp-for="EducationLevel" type="radio" name="EducationLevel" id="SocialStatus" value="school" /> School  <br>
+                <input asp-for="EducationLevel" type="radio" name="EducationLevel" id="SocialStatus" value="university" /> University<br>
+                <input asp-for="EducationLevel" type="radio" name="EducationLevel" id="SocialStatus" value="institute" /> Institute<br>
+                <input asp-for="EducationLevel" type="radio" name="EducationLevel" id="SocialStatus" value="non" /> Doesn't study<br>
+                <span asp-validation-for="EducationLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EducationalInstitute" class="control-label"></label>
+                <input asp-for="EducationalInstitute" class="form-control" />
+                <span asp-validation-for="EducationalInstitute" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="yearlyCost" class="control-label"></label>
+                <input asp-for="yearlyCost" class="form-control" />
+                <span asp-validation-for="yearlyCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="monthlyContribution" class="control-label"></label>
+                <input asp-for="monthlyContribution" class="form-control" />
+                <span asp-validation-for="monthlyContribution" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Insured" /> @Html.DisplayNameFor(model => model.Insured)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="SocialStatus" class="control-label"></label><br>
+                <input asp-for="SocialStatus" type="radio" name="SocialStatus" id="SocialStatus" value="Single" /> Single <br>
+                <input asp-for="SocialStatus" type="radio" name="SocialStatus" id="SocialStatus" value="Married" /> Married <br>
+                <span asp-validation-for="SocialStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HealthStatus" class="control-label"></label><br>
+                <input asp-for="HealthStatus" type="radio" name="HealthStatus" id="HealthStatus" value="Good" /> Good <br>
+                <input asp-for="HealthStatus" type="radio" name="HealthStatus" id="HealthStatus" value="Diseased" /> Diseased <br>
+                <input asp-for="HealthStatus" type="radio" name="HealthStatus" id="HealthStatus" value="Handicaped" /> Handicaped <br>
+                <span asp-validation-for="HealthStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HandicapType" class="control-label"></label>
+                <input asp-for="HandicapType" class="form-control" />
+                <span asp-validation-for="HandicapType" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="BeneficiarID" class="control-label"></label>
+                <select asp-for="BeneficiarID" class="form-control" asp-items="ViewBag.BeneficiarID"></select>
+                <span asp-validation-for="BeneficiarID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                
+            </div>
+        </form>
+    </div>
+</div>
+
+<br>
+<hr>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Delete" class="btn btn-danger" />
+</form>
+<br>
+<form method="post" asp-action="Cancel">
+    <input type="submit" value="Cancel" class="btn btn-secondary" />
+</form>
+@*
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

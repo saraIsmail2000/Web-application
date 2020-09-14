@@ -1,0 +1,84 @@
+﻿@model Social_orm.Models.Work
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Work</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="sector" class="control-label"></label><br>
+                <input asp-for="sector" type="radio" name="sector" id="sector" value="حر" /> Free <br>
+                <input asp-for="sector" type="radio" name="sector" id="sector" value="ثابت" /> Fixed <br>
+                <input asp-for="sector" type="radio" name="sector" id="sector" value="متقطع" /> Intermittent <br>
+                <span asp-validation-for="sector" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeOfWork" class="control-label">Type of work for public sector :</label><br>
+
+                <input asp-for="TypeOfWork" type="radio" name="TypeOfWork" id="TypeOfWork" value="InternalSecurity" /> Internal Security <br>
+                <input asp-for="TypeOfWork" type="radio" name="TypeOfWork" id="TypeOfWork" value="Army" /> Army <br>
+                <input asp-for="TypeOfWork" type="radio" name="TypeOfWork" id="TypeOfWork" value="PublicServant" /> Public Servant <br>
+                <input asp-for="TypeOfWork" type="radio" name="TypeOfWork" id="TypeOfWork" value="Others" /> Others <br>
+                <span asp-validation-for="TypeOfWork" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeOfWork" class="control-label">Type of work for private sector :</label><br>
+
+                <input asp-for="TypeOfWork" type="radio" name="TypeOfWork" id="TypeOfWork" value="Farmer" /> Farmer <br>
+                <input asp-for="TypeOfWork" type="radio" name="TypeOfWork" id="TypeOfWork" value="Taxi Driver" /> Taxi Driver <br>
+                <input asp-for="TypeOfWork" type="radio" name="TypeOfWork" id="TypeOfWork" value="Employee" /> Employee <br>
+                <input asp-for="TypeOfWork" type="radio" name="TypeOfWork" id="TypeOfWork" value="Merchant" /> Merchant <br>
+                <input asp-for="TypeOfWork" type="radio" name="TypeOfWork" id="TypeOfWork" value="Others" /> Others <br>
+                <span asp-validation-for="TypeOfWork" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Salary" class="control-label"></label>
+                <input asp-for="Salary" class="form-control" />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BeneficiarID" class="control-label"></label>
+                <select asp-for="BeneficiarID" class="form-control" asp-items="ViewBag.BeneficiarID"></select>
+                <span asp-validation-for="BeneficiarID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChildID" class="control-label"></label>
+                <select asp-for="ChildID" class="form-control" asp-items="ViewBag.ChildID"></select>
+                <span asp-validation-for="ChildID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WifeID" class="control-label"></label>
+                <select asp-for="WifeID" class="form-control" asp-items="ViewBag.WifeID"></select>
+                <span asp-validation-for="WifeID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<br>
+<hr>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Delete" class="btn btn-danger" />
+</form>
+<br>
+<form method="post" asp-action="Cancel">
+    <input type="submit" value="Cancel" class="btn btn-secondary" />
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

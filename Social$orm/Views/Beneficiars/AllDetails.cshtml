@@ -1,0 +1,820 @@
+﻿@model Social_orm.Models.viewModels
+@{
+    ViewData["Title"] = "All Details";
+}
+
+<h2> Beneficiary's Information</h2>
+<br />
+<br />
+
+@*
+    <hr />
+*@
+<table class="table">
+    <thead>
+        <tr class="bg-light">
+            <th class="text-dark">
+
+                @Html.DisplayNameFor(model => model.beneficiar.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.beneficiar.FullName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.beneficiar.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.beneficiar.PlaceOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.beneficiar.RecordPlace)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.beneficiar.RecordNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.beneficiar.Nationality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.beneficiar.sect)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.beneficiar.Insured)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.beneficiar.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.beneficiar.SocialStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.beneficiar.HealthStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.beneficiar.HandicapType)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="bg-light">
+            <td> @Html.DisplayFor(model => model.beneficiar.Id)</td>
+            <td>
+                @Html.DisplayFor(model => model.beneficiar.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.beneficiar.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.beneficiar.PlaceOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.beneficiar.RecordPlace)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.beneficiar.RecordNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.beneficiar.Nationality)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.beneficiar.sect)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.beneficiar.Insured)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.beneficiar.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.beneficiar.SocialStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.beneficiar.HealthStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.beneficiar.HandicapType)
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<br />
+<br />
+@if (Model.beneficiar.HealthStatus.Equals("Diseased"))
+{
+    @if (Model.disease != null)
+    {
+        <table class="table">
+            <thead>
+                <tr class="bg-dark"> <th class="text-light float:right" colspan="10"> Disease :</tr>
+            </thead>
+
+            <thead>
+
+                <tr class="bg-light">
+                    <th>
+                        @Html.DisplayNameFor(model => model.disease.ID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.disease.DiseaseType)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.disease.MedicineName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.disease.MedicineCost)
+                    </th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-light">
+                    <td>
+                        @Html.DisplayFor(model => model.disease.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.disease.DiseaseType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.disease.MedicineName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.disease.MedicineCost)
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    }
+    
+    <br />
+    <br />
+
+}
+
+@if (Model.address != null)
+{
+    <table class="table">
+        <thead>
+            <tr class="bg-dark"> <th class="text-light " colspan="10">Address :</th></tr>
+        </thead>
+        <thead>
+            <tr class="bg-light">
+                <th>
+                    @Html.DisplayNameFor(model => model.address.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.address.location)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.address.type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.address.rent)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.address.roomnumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.address.missings)
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr class="bg-light">
+                <td>
+                    @Html.DisplayFor(model => model.address.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.address.location)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.address.type)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.address.rent)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.address.roomnumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.address.missings)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
+
+    <br />
+    <br />
+    @if (Model.work != null)
+    {
+        <table class="table">
+            <thead>
+                <tr class="bg-dark"> <th class="text-light" colspan="10">Work :</th></tr>
+            </thead>
+            <thead>
+                <tr class="bg-light">
+                    <th>
+                        @Html.DisplayNameFor(model => model.work.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.work.sector)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.work.TypeOfWork)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.work.Salary)
+                    </th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-light">
+                    <td>
+                        @Html.DisplayFor(model => model.work.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.work.sector)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.work.TypeOfWork)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.work.Salary)
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+
+        <br />
+        <br />
+    }
+
+    @if (Model.belongings != null)
+    {
+        <table class="table">
+            <thead>
+                <tr class="bg-dark"> <th class="text-light" colspan="10">Belongings</th></tr>
+            </thead>
+            <thead>
+                <tr class="bg-light">
+                    <th>
+                        @Html.DisplayNameFor(model => model.belongings.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.belongings.cars)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.belongings.houses)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.belongings.lands)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.belongings.rentIncomeType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.belongings.rentIncomeAmount)
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr class="bg-light">
+                    <td>
+                        @Html.DisplayFor(model => model.belongings.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.belongings.cars)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.belongings.houses)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.belongings.lands)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.belongings.rentIncomeType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.belongings.rentIncomeAmount)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <br />
+        <br />
+    }
+    @if (Model.loan != null)
+    {
+
+        <table class="table">
+            <thead>
+                <tr class="bg-dark"> <th class="text-light" colspan="10">Loans</th></tr>
+            </thead>
+            <thead>
+                <tr class="bg-light">
+                    <th>
+                        @Html.DisplayNameFor(model => model.loan.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.loan.source)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.loan.reason)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.loan.amount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.loan.paymentfrequency)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.loan.paymentvalue)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.loan.OtherDebts)
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-light">
+                    <td>
+                        @Html.DisplayFor(model => model.loan.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.loan.source)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.loan.reason)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.loan.amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.loan.paymentfrequency)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.loan.paymentvalue)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.loan.OtherDebts)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <br />
+        <br />
+    }
+    @if (Model.socialhelp != null)
+    {
+
+        <table class="table">
+            <thead>
+                <tr class="bg-dark"> <th class="text-light" colspan="10">Contributions :</th></tr>
+            </thead>
+            <thead>
+                <tr class="bg-light">
+                    <th>
+                        @Html.DisplayNameFor(model => model.socialhelp.ID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.socialhelp.InstitutionName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.socialhelp.type)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.socialhelp.duration)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.socialhelp.amount)
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+
+                <tr class="bg-light">
+                    <td>
+                        @Html.DisplayFor(model => model.socialhelp.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.socialhelp.InstitutionName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.socialhelp.type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.socialhelp.duration)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.socialhelp.amount)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <br />
+    }
+
+
+
+
+
+
+    @if (Model.beneficiar.SocialStatus.Equals("Married"))
+    {
+        @if (Model.wife != null)
+        {
+            <h2> @Model.beneficiar.FullName Wife :</h2>
+            <br />
+            <br />
+            <table class="table">
+                <thead>
+                    <tr class="bg-light">
+                        <th class="text-dark">
+                            @Html.DisplayNameFor(model => model.wife.Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.wife.FullName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.wife.DateOfBirth)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.wife.PlaceOfBirth)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.wife.Nationality)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.wife.sect)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.wife.Insured)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.wife.PhoneNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.wife.HealthStatus)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.wife.HandicapType)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-light">
+                        <td>
+                            @Html.DisplayFor(model => model.wife.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.wife.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.wife.DateOfBirth)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.wife.PlaceOfBirth)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.wife.Nationality)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.wife.sect)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.wife.Insured)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.wife.PhoneNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.wife.HealthStatus)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.wife.HandicapType)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <br />
+            <br />
+            @if (Model.wife.disease != null)
+            {
+
+                <table class="table">
+                    <thead>
+                        <tr class="bg-dark"> <th class="text-light" colspan="10"> @Model.wife.FullName disease :</th></tr>
+                    </thead>
+                    <thead>
+                        <tr class="bg-light">
+                            <th>
+                                @Html.DisplayNameFor(model => model.wife.disease.ID)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.wife.disease.DiseaseType)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.wife.disease.MedicineName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.wife.disease.MedicineCost)
+                            </th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-light">
+                            <td>
+                                @Html.DisplayFor(model => model.wife.disease.ID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.wife.disease.DiseaseType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.wife.disease.MedicineName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.wife.disease.MedicineCost)
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+               
+
+                <br />
+                <br />
+            }
+
+            @if (Model.wife.work != null)
+            {
+
+                <table class="table">
+                    <thead>
+                        <tr class="bg-dark"> <th class="text-light" colspan="10"> @Model.wife.FullName work :</th></tr>
+                    </thead>
+                    <thead>
+                        <tr class="bg-light">
+                            <th>
+                                @Html.DisplayNameFor(model => model.wife.work.Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.wife.work.sector)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.wife.work.TypeOfWork)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.wife.work.Salary)
+                            </th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-light">
+                            <td>
+                                @Html.DisplayFor(model => model.wife.work.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.wife.work.sector)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.wife.work.TypeOfWork)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.wife.work.Salary)
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+               
+                <br />
+                <br />
+
+            }
+        }
+
+        @if (Model.children.Count() > 0)
+        {
+            int i = 1;
+            <h2> @Model.beneficiar.FullName's Children</h2>
+            <br />
+            <br />
+
+            @foreach (Child child in Model.children)
+            {
+
+
+                <table class="table">
+                    <thead>
+                        <tr class="bg-dark"> <th class="text-light" colspan="10"> child @(i++)  : @child.Name   </th></tr>
+                        <tr class="bg-light">
+                            <th>
+                                @Html.DisplayNameFor(model => child.Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => child.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => child.EducationLevel)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => child.EducationalInstitute)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => child.yearlyCost)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => child.monthlyContribution)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => child.Insured)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => child.SocialStatus)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => child.HealthStatus)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => child.HandicapType)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-light">
+                            <td>
+                                @Html.DisplayFor(modelItem => child.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => child.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => child.EducationLevel)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => child.EducationalInstitute)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => child.yearlyCost)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => child.monthlyContribution)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => child.Insured)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => child.SocialStatus)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => child.HealthStatus)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => child.HandicapType)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                
+                <br />
+                <br />
+                @if (!child.SocialStatus.Equals("Married"))
+                {
+                    if (child.disease != null)
+                    {
+
+                        <table class="table">
+                            <thead>
+                                <tr class="bg-dark"> <th class="text-light" colspan="10"> @child.Name disease :</th></tr>
+                                <tr class="bg-light">
+                                    <th>
+                                        @Html.DisplayNameFor(model => child.disease.ID)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => child.disease.DiseaseType)
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => child.disease.MedicineName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => child.disease.MedicineCost)
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-light">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => child.disease.ID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => child.disease.DiseaseType)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => child.disease.MedicineName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => child.disease.MedicineCost)
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+                       
+                        <br />
+                        <br />
+                    }
+                    @if (child.work != null)
+                    {
+                        <table class="table">
+                            <thead>
+                                <tr class="bg-dark"> <th class="text-light" colspan="10"> @child.Name work : </tr>
+                                <tr class="bg-light">
+                                    <th>
+                                        @Html.DisplayNameFor(model => child.work.Id)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => child.work.sector)
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => child.work.TypeOfWork)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => child.work.Salary)
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-light">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => child.work.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => child.work.sector)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => child.work.TypeOfWork)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => child.work.Salary)
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <br />
+                        <br />
+                    }
+
+                }
+
+
+
+
+            }
+
+
+
+            <br />
+        }
+
+    }

@@ -1,0 +1,157 @@
+﻿@model Social_orm.Models.Child
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+@if (ViewBag.child == "first")
+{
+    <h3>
+        Does the beneficiary have children ?
+    </h3>
+
+    <div class="row">
+        <div>
+            <form asp-action="Answer1" method="post">
+                <div class="col-auto">
+                    <input type="submit" name="submit" value="Yes" class="btn btn-primary" />
+                    <input type="submit" name="submit" value="No" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+}
+
+
+@if (@ViewBag.child == "others")
+{
+    <h3>
+        Any Other children?
+    </h3>
+
+    <div class="row">
+        <div>
+            <form asp-action="Answer2" method="post">
+                <div class="col-auto">
+                    <input type="submit" name="submit" value="Yes" class="btn btn-primary" />
+                    <input type="submit" name="submit" value="No" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+}
+
+@if (@ViewBag.create != null || ViewBag.Field != null)
+{
+    <br>
+    <br>
+    <br>
+    <h3>Submit the new Child's Info</h3>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SocialStatus" class="control-label"></label><br>
+                    <input asp-for="SocialStatus" type="radio" name="SocialStatus" id="SocialStatus" value="Single" /> Single <br>
+                    <input asp-for="SocialStatus" type="radio" name="SocialStatus" id="SocialStatus" value="Married" /> Married <br>
+                    <span asp-validation-for="SocialStatus" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="monthlyContribution" class="control-label">Amount of Contributions for the family per month if any</label>
+                    <input asp-for="monthlyContribution" class="form-control" />
+                    <span asp-validation-for="monthlyContribution" class="text-danger"></span>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label asp-for="EducationLevel" class="control-label">Educational level :</label><br>
+                    <input asp-for="EducationLevel" type="radio" name="EducationLevel" id="SocialStatus" value="school" /> School  <br>
+                    <input asp-for="EducationLevel" type="radio" name="EducationLevel" id="SocialStatus" value="university" /> University<br>
+                    <input asp-for="EducationLevel" type="radio" name="EducationLevel" id="SocialStatus" value="institute" /> Institute<br>
+                    <input asp-for="EducationLevel" type="radio" name="EducationLevel" id="SocialStatus" value="non" /> Doesn't study<br>
+                    <span asp-validation-for="EducationLevel" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EducationalInstitute" class="control-label"></label>
+                    <input asp-for="EducationalInstitute" class="form-control" />
+                    <span asp-validation-for="EducationalInstitute" class="text-danger"></span>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label asp-for="yearlyCost" class="control-label">Yearly Cost for education :</label>
+                    <input asp-for="yearlyCost" class="form-control" />
+                    <span asp-validation-for="yearlyCost" class="text-danger"></span>
+                </div>
+
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Insured" /> @Html.DisplayNameFor(model => model.Insured)
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="HealthStatus" class="control-label"></label><br>
+                    <input asp-for="HealthStatus" type="radio" name="HealthStatus" id="HealthStatus" value="Good" /> Good <br>
+                    <input asp-for="HealthStatus" type="radio" name="HealthStatus" id="HealthStatus" value="Diseased" /> Diseased <br>
+                    <input asp-for="HealthStatus" type="radio" name="HealthStatus" id="HealthStatus" value="Handicaped" /> Handicaped <br>
+                    <span asp-validation-for="HealthStatus" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="HandicapType" class="control-label">Handicap Type(if exists)</label>
+                    <input asp-for="HandicapType" class="form-control" />
+                    <span asp-validation-for="HandicapType" class="text-danger"></span>
+                </div>
+                @*
+                    <div class="form-group">
+                        <label asp-for="BeneficiarID" class="control-label"></label>
+                        <select asp-for="BeneficiarID" class ="form-control" asp-items="ViewBag.BeneficiarID"></select>
+                    </div>
+                *@
+
+                @if (@ViewBag.Field == null)
+                {
+                    <div class="form-group">
+                        <input type="submit" value="Next" class="btn btn-primary" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        <input type="submit" value="Add" class="btn btn-primary" />
+                    </div>
+                }
+            </form>
+        </div>
+    </div>
+}
+
+<br>
+@if (@ViewBag.Field != null)
+{
+    <form method="post" asp-action="Cancel">
+        <div class="form-group">
+            <input type="submit" value="Cancel" class="btn btn-danger" />
+        </div>
+    </form>
+}
+else
+{
+    <form method="post" asp-action="Cancel2">
+        <div class="form-group">
+            <input type="submit" value="Cancel Creation" class="btn btn-danger" />
+        </div>
+    </form>
+}
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

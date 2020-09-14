@@ -1,0 +1,50 @@
+﻿@model Social_orm.Models.Aid
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 dir="rtl">Create</h1>
+
+<h4 dir="rtl">Aid</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div style="font-size:x-large" class="form-group">
+                <label style="align-items:center;direction:inherit" asp-for="Date"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label style="align-items:flex-end" asp-for="type"></label>
+                <input asp-for="type" style="font-size:x-large" class="form-control" />
+                <span asp-validation-for="type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label style="align-items:flex-start;direction:rtl" asp-for="amount" class="control-label"></label>
+                <input asp-for="amount" class="form-control" />
+                <span asp-validation-for="amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BeneficiarID" class="control-label"></label>
+                <select asp-for="BeneficiarID" class="form-control" asp-items="ViewBag.BeneficiarID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+<div>
+    <a asp-action="Index" class="alert-link text-muted">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

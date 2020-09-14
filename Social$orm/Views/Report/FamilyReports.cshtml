@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Social_orm.ViewModel.SpecialFormForAFamily>
+
+@{
+    ViewData["Title"] = "FamilyReports";
+}
+
+<h1 class="text-center">Family Reports :<i class="fa fa-file-text-o" aria-hidden="true"></i></h1>
+
+<br>
+
+
+<table id="table_1" class="container table table-bordered table-light">
+    <thead >
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BeneficiarId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BeneficiarName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalNbOfFamily)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalFamilyWorkers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalNbofRooms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalMonthIncome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalNbofStudents)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalNbOfstudInUni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HomeRent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NbDiseaseAndHandicap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.totalRate)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BeneficiarId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BeneficiarName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalNbOfFamily)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalFamilyWorkers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalNbofRooms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalMonthIncome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalNbofStudents)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalNbOfstudInUni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HomeRent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NbDiseaseAndHandicap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.totalRate)
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#table_1').DataTable();
+        });
+    </script>
+}
+
+

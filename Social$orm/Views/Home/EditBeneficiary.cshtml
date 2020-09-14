@@ -1,0 +1,250 @@
+﻿@model IEnumerable<Social_orm.Models.Beneficiar>
+
+@{
+    ViewData["Title"] = "EditBeneficiary";
+}
+
+<h2> All Fields of @ViewBag.Name : </h2>
+
+<div>
+    @foreach (var item in Model)
+    { 
+        <div>
+            <table class="table">
+                <thead>
+                    <tr> <th colspan="12"> Personal Information </th></tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FullName)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateOfBirth)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PlaceOfBirth)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RecordPlace)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RecordNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nationality)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.sect)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Insured)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PhoneNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SocialStatus)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.HealthStatus)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.HandicapType)
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FullName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateOfBirth)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PlaceOfBirth)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RecordPlace)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RecordNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nationality)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.sect)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Insured)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SocialStatus)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HealthStatus)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HandicapType)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+
+                        ///////////////////////////
+
+
+                    </tbody>
+                </table>
+
+            </div>
+
+            <br>
+            <hr>
+            <br>
+
+            <div>
+                <table class="table">
+
+                    <tr> <th colspan="9"> Wife's Information </th></tr>
+                    @if (item.wife != null)
+                    {
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.wife.FullName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.wife.DateOfBirth)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.wife.PlaceOfBirth)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.wife.Nationality)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.wife.sect)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.wife.Insured)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.wife.PhoneNumber)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.wife.HealthStatus)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.wife.HandicapType)
+                                </th>
+
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.wife.FullName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.wife.DateOfBirth)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.wife.PlaceOfBirth)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.wife.Nationality)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.wife.sect)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.wife.Insured)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.wife.PhoneNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.wife.HealthStatus)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.wife.HandicapType)
+                                </td>
+
+                                <td>
+                                    <a asp-controller="Wives" asp-action="Edit" asp-route-id="@item.wife.Id">Edit</a> |
+                                    <a asp-controller="Wives" asp-action="Delete" asp-route-id="@item.wife.Id">Delete</a>
+                                </td>
+                            </tr>
+                            @if (item.wife.disease != null)
+                            {
+                                <tr>
+                                    <th colspan="9"> Wife's Disease </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="3">
+                                        @Html.DisplayNameFor(model => model.disease.DiseaseType)
+                                    </th>
+                                    <th colspan="2">
+                                        @Html.DisplayNameFor(model => model.disease.MedicineName)
+                                    </th>
+                                    <th colspan="2">
+                                        @Html.DisplayNameFor(model => model.disease.MedicineCost)
+                                    </th>
+                                    <th colspan="2">
+                                        
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        @Html.DisplayFor(modelItem => item.wife.disease.DiseaseType)
+                                    </td>
+                                    <td colspan="3">
+                                        @Html.DisplayFor(modelItem => item.wife.disease.MedicineName)
+                                    </td>
+                                    <td colspan="2">
+                                        @Html.DisplayFor(modelItem => item.wife.disease.MedicineCost)
+                                    </td>
+                                    <th colspan="2">
+                                        <a asp-controller="Diseases" asp-action="Edit" asp-route-id="@item.wife.disease.ID">Edit</a> |
+                                        <a asp-controller="Diseases" asp-action="Delete" asp-route-id="@item.wife.disease.ID">Delete</a>
+                                    </th>
+                                </tr>
+                            }
+
+                            </tbody>
+
+                    }
+
+                    else
+                    {
+                        <tbody>
+                            <tr>
+                                <th colspan="5">  No wife  </th>
+                                <th colspan="4"> <a asp-controller="Wives" asp-action="Create"> Add her </a> </th>
+                                
+                            </tr>
+
+                        </tbody>
+                    }
+
+                    
+
+                </table>
+            </div>
+
+
+                    }
+        </div>
+

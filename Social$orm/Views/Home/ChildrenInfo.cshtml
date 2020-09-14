@@ -1,0 +1,209 @@
+﻿@model IEnumerable<Social_orm.Models.Child>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    ViewData["Title"] = "Children Info";
+}
+
+
+<br>
+<h2> All Children of @ViewBag.Name :</h2>
+<br>
+
+<div dir="rtl">
+    <form method="post">
+        <button class="bg-danger text-white" asp-action="NewChild" name="add" value="Children"> New Child </button>
+    </form>
+</div>
+
+<br>
+<br>
+@{
+    int i = 1;
+
+    @foreach (var item in Model)
+    {
+
+        <br>
+        <br>
+        <table class="table">
+            <thead>
+                <tr class="bg-dark"> <th class="text-light" colspan="10"> Child @i</th> </tr>
+            </thead>
+            <thead>
+                <tr class="bg-light">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EducationLevel)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EducationalInstitute)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.yearlyCost)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.monthlyContribution)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Insured)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SocialStatus)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.HealthStatus)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.HandicapType)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EducationLevel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EducationalInstitute)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.yearlyCost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.monthlyContribution)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Insured)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SocialStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HealthStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HandicapType)
+                    </td>
+
+                    <td>
+                        <a class="text-info" asp-controller="Children" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a class="text-info" asp-controller="Children" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+                @if (item.SocialStatus.Equals("Single"))
+                {
+                    @if (item.disease == null)
+                    {
+
+                        <tr>
+                            <th colspan="5">No Disease </th>
+                            <th colspan="5">
+                                <form method="post">
+                                    <button class="btn btn-info" asp-action="AddWD" name="ChildDisease" value="@item.Id"> Add it </button>
+                                </form>
+                            </th>
+                        </tr>
+                    }
+                    else
+                    {
+
+                        <tr> <th class="text-dark" colspan="10"> Disease Info </th></tr>
+                        <tr class="bg-light">
+                            <th colspan="3">
+                                @Html.DisplayNameFor(model => model.disease.DiseaseType)
+                            </th>
+                            <th colspan="3">
+                                @Html.DisplayNameFor(model => model.disease.MedicineName)
+                            </th>
+                            <th colspan="3">
+                                @Html.DisplayNameFor(model => model.disease.MedicineCost)
+                            </th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                @Html.DisplayFor(modelItem => item.disease.DiseaseType)
+                            </td>
+                            <td colspan="3">
+                                @Html.DisplayFor(modelItem => item.disease.MedicineName)
+                            </td>
+                            <td colspan="3">
+                                @Html.DisplayFor(modelItem => item.disease.MedicineCost)
+                            </td>
+
+                            <td>
+                                <a class="text-info" asp-controller="Diseases" asp-action="Edit" asp-route-id="@item.disease.ID">Edit</a> |
+                                <a class="text-info" asp-controller="Diseases" asp-action="Delete" asp-route-id="@item.disease.ID">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                    @if (item.work == null)
+                    {
+
+                        <tr>
+                            <th colspan="5">No Work </th>
+                            <th colspan="5">
+                                <form method="post">
+                                    <button class="btn btn-info" asp-action="AddWD" name="ChildWork" value="@item.Id"> Add it </button>
+                                </form>
+                            </th>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr> <th class="text-dark" colspan="10"> Work Info </th></tr>
+                        <tr class="bg-light">
+                            <th colspan="3">
+                                @Html.DisplayNameFor(model => model.work.sector)
+                            </th>
+                            <th colspan="3">
+                                @Html.DisplayNameFor(model => model.work.TypeOfWork)
+                            </th>
+                            <th colspan="3">
+                                @Html.DisplayNameFor(model => model.work.Salary)
+                            </th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                @Html.DisplayFor(modelItem => item.work.sector)
+                            </td>
+                            <td colspan="3">
+                                @Html.DisplayFor(modelItem => item.work.TypeOfWork)
+                            </td>
+                            <td colspan="3">
+                                @Html.DisplayFor(modelItem => item.work.Salary)
+                            </td>
+                            <td>
+                                <a class="text-info" asp-controller="Works" asp-action="Edit" asp-route-id="@item.work.Id">Edit</a> |
+                                <a class="text-info" asp-controller="Works" asp-action="Delete" asp-route-id="@item.work.Id">Delete</a>
+                            </td>
+                        </tr>
+
+                    }
+
+                }
+            </tbody>
+        </table>
+        <br>
+        <br>
+        i = i + 1;
+    }
+}
+
+<br>
+<br>
+<hr>
+<br>
+<form method="post" asp-action="Back">
+    <button class="btn btn-block bg-dark text-white"> Back </button>
+</form>

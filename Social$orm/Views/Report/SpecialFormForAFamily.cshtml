@@ -1,0 +1,87 @@
+﻿@model Social_orm.ViewModel.SpecialFormForAFamily
+
+@{
+    ViewData["Title"] = "SpecialFormForAFamily";
+}
+
+
+<h1 class="text-center">   تقرير عن المستخدم  <i class="fa fa-edit"></i></h1>
+
+<hr />
+<div  class="align-items-center row">
+    <div class="col-md-4">
+        <form asp-action="SpecialFormForAFamily">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <i class="fa fa-address-card" aria-hidden="true"></i>
+                <label asp-for="BeneficiarId" class="control-label"></label>
+                <select asp-for="BeneficiarId" class="form-control" asp-items="@(new SelectList(Model.AllBeneficiars,"Value","Text"))"></select>
+                <span asp-validation-for="BeneficiarId" class="text-danger"></span>
+
+            </div>
+            <div > <input type="submit" value="Show Info" class="btn btn-dark" /></div>
+
+        </form>
+    </div>
+</div>
+<div><br /><br /></div>
+
+
+<table id="table_2" class="table-active table-bordered table-striped" data-toggle="table">
+    <thead>
+        <tr>
+            <th class="table-success"> @Html.DisplayNameFor(model => model.TotalMonthIncome)</th>
+            <th class="table-success">  @Html.DisplayNameFor(model => model.TotalNbOfFamily)</th>
+            <th class="table-success">@Html.DisplayNameFor(model => model.TotalNbofRooms)</th>
+            <th class="table-success"> @Html.DisplayNameFor(model => model.TotalNbofStudents)</th>
+            <th class="table-success"> @Html.DisplayNameFor(model => model.TotalNbOfstudInUni)</th>
+            <th class="table-success"> @Html.DisplayNameFor(model => model.TotalFamilyWorkers)</th>
+            <th class="table-success"> @Html.DisplayNameFor(model => model.HomeRent)</th>
+            <th class="table-success"> @Html.DisplayNameFor(model => model.JobType)</th>
+            <th class="table-success"> @Html.DisplayNameFor(model => model.NbDiseaseAndHandicap)</th>
+            <th class="table-success"> @Html.DisplayNameFor(model => model.totalRate)</th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.DisplayFor(model => model.TotalMonthIncome)</td>
+
+            <td> @Html.DisplayFor(model => model.TotalNbOfFamily)</td>
+
+            <td> @Html.DisplayFor(model => model.TotalNbofRooms)</td>
+
+            <td class="align-content-sm-around"> @Html.DisplayFor(model => model.TotalNbofStudents)</td>
+
+            <td> @Html.DisplayFor(model => model.TotalNbOfstudInUni)</td>
+
+            <td> @Html.DisplayFor(model => model.TotalFamilyWorkers)</td>
+            <td> @Html.DisplayFor(model => model.HomeRent)</td>
+            <td> @Html.DisplayFor(model => model.JobType)</td>
+            <td> @Html.DisplayFor(model => model.NbDiseaseAndHandicap)</td>
+            <td> @Html.DisplayFor(model => model.totalRate)</td>
+
+
+
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    <br /> <br /> <br />
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<style>
+    #table_2{
+        color : #627c89
+    }
+</style>

@@ -1,0 +1,97 @@
+﻿@model Social_orm.Models.Address
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<br>
+
+<h1>@ViewBag.Name's Address</h1>
+
+<br>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="location" class="control-label"></label>
+                <input asp-for="location" class="form-control" />
+                <span asp-validation-for="location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="type" class="control-label"></label>
+                <select asp-for="type" class="form-control">
+                    <option>Owner</option>
+                    <option>Renter</option>
+                </select>
+                <span asp-validation-for="type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rent" class="control-label">Rent amount if exists : (in Lebanese pound)</label>
+                <input asp-for="rent" class="form-control" />
+                <span asp-validation-for="rent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="roomnumber" class="control-label"></label>
+                <input asp-for="roomnumber" class="form-control" />
+                <span asp-validation-for="roomnumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Missings you need at home :</label><br>
+                @* @for (var i = 0; i < Model.misses.Count; i++) {
+                    <input name="misses" type="checkbox" />  @Model.misses[i]<br>
+                    <input type="hidden" value="@i">
+                      @ViewData[""+@i] = i;
+                *@
+                <input type="checkbox" name="misses" value="Refrigerator" /> Refrigerator<br>
+                <input type="checkbox" name="misses" value="Oven" /> Oven<br>
+                <input type="checkbox" name="misses" value="Water heating" /> Water heating<br>
+                <input type="checkbox" name="misses" value="Washing machine" /> Washing machine<br>
+
+            </div>
+            @if (@ViewBag.Field == null)
+            {
+                <div class="form-group">
+                    <input type="submit" value="Next" class="btn btn-primary" />
+                </div>
+            }
+            else
+            {
+                <div class="form-group">
+                    <input type="submit" value="Add" class="btn btn-primary" />
+                </div>
+            }
+        </form>
+    </div>
+</div>
+
+<br>
+@if (@ViewBag.Field != null)
+{
+    <form method="post" asp-action="Cancel">
+        <div class="form-group">
+            <input type="submit" value="Cancel" class="btn btn-danger" />
+        </div>
+    </form>
+}
+else { 
+<form method="post" asp-action="Cancel2">
+    <div class="form-group">
+        <input type="submit" value="Cancel Creation" class="btn btn-danger" />
+    </div>
+</form>
+}
+
+
+
+
+@*
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

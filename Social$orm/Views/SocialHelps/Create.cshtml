@@ -1,0 +1,81 @@
+﻿@model Social_orm.Models.SocialHelp
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<br>
+<h3>Social Help</h3>
+<br>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="InstitutionName" class="control-label">Name of the institution </label>
+                <input asp-for="InstitutionName" class="form-control" />
+                <span asp-validation-for="InstitutionName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="type" class="control-label"></label>
+                <input asp-for="type" class="form-control" />
+                <span asp-validation-for="type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="duration" class="control-label"></label>
+                <input asp-for="duration" type="radio" name="duration" id="duration" value="weekly" /> Weekly<br>
+                <input asp-for="duration" type="radio" name="duration" id="duration" value="monthly" /> Monthly<br>
+                <input asp-for="duration" type="radio" name="duration" id="duration" value="yearly" /> Yearly<br>
+                <span asp-validation-for="duration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="amount" class="control-label"></label>
+                <input asp-for="amount" class="form-control" />
+                <span asp-validation-for="amount" class="text-danger"></span>
+            </div>
+            @if (@ViewBag.Field == null)
+            {
+                <div class="form-group">
+                    <input type="submit" value="Next" class="btn btn-primary" />
+                </div>
+                
+            }
+            else
+            {
+                <div class="form-group">
+                    <input type="submit" value="Add" class="btn btn-primary" />
+                </div>
+            }
+
+        </form>
+    </div>
+</div>
+
+<br>
+@if (@ViewBag.Field != null)
+{
+    <form method="post" asp-action="Cancel">
+        <div class="form-group">
+            <input type="submit" value="Cancel" class="btn btn-danger" />
+        </div>
+    </form>
+}
+else
+{
+    <br>
+    <form method="post" asp-action="Skip">
+        <input type="submit" value="Skip if non" class="btn btn-secondary" />
+    </form>
+    <br>
+    <form method="post" asp-action="Cancel2">
+        <div class="form-group">
+            <input type="submit" value="Cancel Creation" class="btn btn-danger" />
+        </div>
+    </form>
+}
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

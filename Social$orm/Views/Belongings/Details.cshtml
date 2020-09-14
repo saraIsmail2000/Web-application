@@ -1,0 +1,47 @@
+﻿@model Social_orm.Models.Belongings
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Belongings</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.cars)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.cars)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.houses)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.houses)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.lands)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.lands)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.rentIncomeType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.rentIncomeType)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.rentIncomeAmount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.rentIncomeAmount)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+</div>

@@ -1,0 +1,178 @@
+﻿@model Social_orm.Models.Wife
+
+@{
+    ViewData["Title"] = "Wife Info";
+}
+
+<br>
+
+<h2> @ViewBag.Name's Wife Information </h2>
+<br><br>
+<table class="table border-light">
+    <thead>
+        <tr class="bg-light">
+            <th class="text-dark">
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th >
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlaceOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nationality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sect)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Insured)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HealthStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HandicapType)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody> 
+        @* foreach hon *@
+        
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.DateOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.PlaceOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.Nationality)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.sect)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.Insured)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.HealthStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.HandicapType)
+                </td>
+
+                <td>
+                    <a  asp-controller="Wives" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> | <a asp-controller="Wives" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+                </td>
+            </tr>
+
+            @if (@Model.work == null)
+            {
+                
+                    <tr>
+                        <th colspan="5">No Work </th>
+                        <th colspan="5">
+                            <form method="post">
+                                <button class="btn btn-info" asp-action="AddWD" name="WifeWork" value="@Model.Id"> Add it </button>
+                            </form>
+                        </th>
+                    </tr>
+                
+            }
+            else
+            {
+                <tr> <th class="text-dark bg-light" colspan="10"> Her Work </th></tr>
+                <tr>
+                    <th colspan="3">
+                        @Html.DisplayNameFor(model => model.work.sector)
+                    </th>
+                    <th colspan="3">
+                        @Html.DisplayNameFor(model => model.work.TypeOfWork)
+                    </th>
+                    <th colspan="3">
+                        @Html.DisplayNameFor(model => model.work.Salary)
+                    </th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        @Html.DisplayFor(modelItem => modelItem.work.sector)
+                    </td>
+                    <td colspan="3">
+                        @Html.DisplayFor(modelItem => modelItem.work.TypeOfWork)
+                    </td>
+                    <td colspan="3">
+                        @Html.DisplayFor(modelItem => modelItem.work.Salary)
+                    </td>
+                    <td>
+                        <a asp-controller="Works" asp-action="Edit" asp-route-id="@Model.work.Id">Edit</a> | <a asp-controller="Works" asp-action="Delete" asp-route-id="@Model.work.Id">Delete</a>
+                    </td>
+                </tr>
+
+            }
+
+            @if (Model.disease == null)
+            {
+                
+                    <tr>
+                        <th colspan="5">No Disease </th>
+                        <th colspan="5">
+                            <form method="post">
+                                <button class="btn btn-info" asp-action="AddWD" name="WifeDisease" value="@Model.Id"> Add it </button>
+                            </form>
+                        </th>
+                    </tr>
+                
+            }
+            else
+            {
+                <tr> <th class="text-dark bg-light" colspan="10"> Her Disease </th></tr>
+                <tr>
+                    <th colspan="3">
+                        @Html.DisplayNameFor(model => model.disease.DiseaseType)
+                    </th>
+                    <th colspan="3">
+                        @Html.DisplayNameFor(model => model.disease.MedicineName)
+                    </th>
+                    <th colspan="3">
+                        @Html.DisplayNameFor(model => model.disease.MedicineCost)
+                    </th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        @Html.DisplayFor(modelItem => modelItem.disease.DiseaseType)
+                    </td>
+                    <td colspan="3">
+                        @Html.DisplayFor(modelItem => modelItem.disease.MedicineName)
+                    </td>
+                    <td colspan="3">
+                        @Html.DisplayFor(modelItem => modelItem.disease.MedicineCost)
+                    </td>
+
+                    <td>
+                        <a asp-controller="Diseases" asp-action="Edit" asp-route-id="@Model.disease.ID">Edit</a> | <a asp-controller="Diseases" asp-action="Delete" asp-route-id="@Model.disease.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        
+    </tbody>
+</table>
+
+<br>
+<form method="post" asp-action="Back">
+    <button class="btn btn-dark text-white" > Back </button>
+</form>

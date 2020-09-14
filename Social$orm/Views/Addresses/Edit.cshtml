@@ -1,0 +1,73 @@
+﻿@model Social_orm.Models.Address
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Address</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="location" class="control-label"></label>
+                <input asp-for="location" class="form-control" />
+                <span asp-validation-for="location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="type" class="control-label"></label><br>
+                <select asp-for="type" class="form-control">
+                    <option>Owner</option>
+                    <option>Renter</option>
+                </select>
+                <span asp-validation-for="type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rent" class="control-label"></label>
+                <input asp-for="rent" class="form-control" />
+                <span asp-validation-for="rent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="roomnumber" class="control-label"></label>
+                <input asp-for="roomnumber" class="form-control" />
+                <span asp-validation-for="roomnumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="missings" class="control-label"></label>
+                <input asp-for="missings" class="form-control" />
+                <span asp-validation-for="missings" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="BeneficiarID" class="control-label"></label>
+                <select asp-for="BeneficiarID" class="form-control" asp-items="ViewBag.BeneficiarID"></select>
+                <span asp-validation-for="BeneficiarID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<hr>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Delete" class="btn btn-danger" />
+</form>
+<br>
+<form method="post" asp-action="Cancel">
+    <input type="submit" value="Cancel" class="btn btn-secondary" />
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

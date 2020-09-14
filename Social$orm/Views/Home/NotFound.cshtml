@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "NotFound";
+}
+
+<h3> The @ViewBag.Field Field of @ViewBag.Name was never submitted before .</h3>
+<br>
+<hr>
+
+<div >
+    <form method="post">
+    <label > would you like to add it ?</label> 
+    <button class="btn btn-info" asp-action="CreateField" name="add" value="@ViewBag.Field" > Add </button>
+    <br><br><br>
+            <label> If not get  </label>  <button class="btn btn-danger" asp-action="Back" name="add" value="Back" > Back </button>
+        </form>
+</div>

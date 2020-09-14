@@ -1,0 +1,97 @@
+﻿@model Social_orm.Models.Wife
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Wife</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlaceOfBirth" class="control-label"></label>
+                <input asp-for="PlaceOfBirth" class="form-control" />
+                <span asp-validation-for="PlaceOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nationality" class="control-label"></label>
+                <input asp-for="Nationality" class="form-control" />
+                <span asp-validation-for="Nationality" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sect" class="control-label"></label><br>
+                <select asp-for="sect" class="form-control">
+                    <option>Shia</option>
+                    <option>Sunna</option>
+                    <option>Christian</option>
+                    <option>Others</option>
+                </select>
+                <span asp-validation-for="sect" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Insured" /> @Html.DisplayNameFor(model => model.Insured)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HealthStatus" class="control-label"></label><br>
+                <input asp-for="HealthStatus" type="radio" name="HealthStatus" id="HealthStatus" value="Good" /> Good <br>
+                <input asp-for="HealthStatus" type="radio" name="HealthStatus" id="HealthStatus" value="Diseased" /> Diseased <br>
+                <input asp-for="HealthStatus" type="radio" name="HealthStatus" id="HealthStatus" value="Handicaped" /> Handicaped <br>
+                <span asp-validation-for="HealthStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HandicapType" class="control-label"></label>
+                <input asp-for="HandicapType" class="form-control" />
+                <span asp-validation-for="HandicapType" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="BeneficiarID" class="control-label"></label>
+                <select asp-for="BeneficiarID" class="form-control" asp-items="ViewBag.BeneficiarID"></select>
+                <span asp-validation-for="BeneficiarID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                
+            </div>
+        </form>
+    </div>
+</div>
+
+<br>
+<hr>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Delete" class="btn btn-danger" />
+</form>
+
+<br>
+<form method="post" asp-action="Cancel">
+    <input type="submit" value="Cancel" class="btn btn-secondary" />
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
